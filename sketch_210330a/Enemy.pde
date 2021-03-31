@@ -18,18 +18,17 @@ class Enemy {
   
   void randomize() {
 
-    this.answer = int(random(0, 10))
-    ;
+    this.answer = int(random(0, 10));
     this.distance = width /1.9;
     this.angle = random(0, 360) * 2 *PI;
-    this.x = width/2 + cos(angle) * width/2;
-    this.y = width/2 + sin(angle) * width/2;
+    this.x = cos(angle) * width/2;
+    this.y = sin(angle) * width/2;
   }
 
   void move() {
     distance -= speed / 10;
-    this.x = width/2 + cos(angle) * (distance);
-    this.y = height/2 + sin(angle) * (distance);
+    this.x = cos(angle) * (distance);
+    this.y = sin(angle) * (distance);
   } 
 
   void drawBody() {

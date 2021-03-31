@@ -5,22 +5,48 @@ class Player {
   int answer;
   int term1;
   int term2;
-  PImage  img;
+  
+  int currentProjectile;
+  
+  PVector canon;
+  PVector center;
   
   Player() {
-      this.img = loadImage("earth.png");
+    center = new PVector(width/2, height/2);
+    canon = new PVector(mouseX, mouseY);
   }
-  
-  void drawPlanet() {
-    image(img, width/2, height/2);
-  }
+
   void drawCanon() {
     
-    line(float(width/2), float(height/2), float(mouseX), float(mouseY));
+    // VECTOR MATH GO BRR
+    canon.x = mouseX;
+    canon.y = mouseY; 
+    canon.sub(center);
+    canon.normalize();
+    canon.mult(75);
+    
+    strokeWeight(3);
+    line(0, 0, canon.x, canon.y);
+   
     
   }
   void fire() {
+    fill(255);
+    circle(canon.x, canon.y, 20);
+  }
+  
+  void drawPlanet(boolean damage) {
+    imageMode(CENTER);
+    image(planet, 0, 0, 177, 85);
     
+    if(damage) 
+    {
+      tint(255, 0, 0);
+    }
+    else 
+    {
+     tint(255, 255, 255);
+    }
   }
 
   boolean checkAnswer(Enemy e) {
