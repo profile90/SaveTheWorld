@@ -26,11 +26,9 @@ class Player {
     strokeWeight(3);
     line(0, 0, canon.x, canon.y);
     
-    
-    
   }
+  
   void fire() {
-    
     fill(255);
     circle(canon.x, canon.y, 20);
  
@@ -72,9 +70,8 @@ class Player {
     if(this.term1 == this.answer) {
        this.term2 = 0;  
     }
-    
-    this.term2 = answer - term1;
-    
+  
+    this.term2 = answer - term1;  
     
   }
 }

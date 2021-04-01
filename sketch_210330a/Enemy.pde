@@ -9,8 +9,6 @@ class Enemy {
   float speed = random(1, 2);
   PFont font = createFont("Arial", 16, true);
   
-   
-
 
   Enemy() {
     randomize();
@@ -42,7 +40,6 @@ class Enemy {
     fill(0, 102, 153, 51);
    
   }
-  
 
   boolean checkAnswer(int answer) {
 
