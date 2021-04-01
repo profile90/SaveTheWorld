@@ -1,12 +1,10 @@
-
-
 class Player {
 
   int answer;
   int term1;
   int term2;
   
-  int currentProjectile;
+  int currentProjectile = 0;
   
   PVector canon;
   PVector center;
@@ -27,12 +25,17 @@ class Player {
     
     strokeWeight(3);
     line(0, 0, canon.x, canon.y);
-   
+    
+    
     
   }
   void fire() {
+    
     fill(255);
     circle(canon.x, canon.y, 20);
+ 
+    projectiles.add(new Projectile(canon, answer));
+    println(projectiles);
   }
   
   void drawPlanet(boolean damage) {
@@ -50,7 +53,8 @@ class Player {
   }
 
   boolean checkAnswer(Enemy e) {
-    if(this.answer == e.answer) {
+    if(this.answer == e.answer) 
+    {
       return true;
     }
     else 
@@ -59,6 +63,7 @@ class Player {
     }
     
   }
+  
   void randomize() {
     
     this.answer = int(random(1, 10));
@@ -72,6 +77,4 @@ class Player {
     
     
   }
-
-
 }

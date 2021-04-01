@@ -2,11 +2,16 @@
 
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
-
-int score = 0;
+ArrayList<Projectile> toBeRemoved = new ArrayList<Projectile>();
+int score = 0; 
+int numbOfEnemies = 5;
+int numbOfProjectiles = 5;
 
 Player player;
 PImage planet;
+
+
+
 
 void setup() {
   planet = loadImage("earth.png");
@@ -18,14 +23,8 @@ void setup() {
   fill(255);
 
 
-  int numbOfEnemies = 5;
-  int numbOfProjectiles = 5;
-
   for (int i = 0; i < numbOfEnemies; i++) {
     enemies.add(new Enemy());
-  }
-  for (int i = 0; i < numbOfProjectiles; i++) {
-    projectiles.add(new Projectile());
   }
 }
 
@@ -51,24 +50,36 @@ void draw() {
   //circle(width/2, width/2, width/20);
 
   for (Enemy e : enemies) {
-    for (Projectile p : projectiles) {
+    for (Projectile p : projectiles) {     
       if(p.hasHit(e)) {
-        score++;
-        p.disable();
+        if(e.checkAnswer(p.answer)){
+          score++;
+        }
+        
+        println(score);
+        toBeRemoved.add(p);
       }
+      p.move();
     }
+    
+    for(Projectile p : toBeRemoved) {
+      projectiles.remove(p); 
+    }
+    
+    toBeRemoved.clear();
+    
     if (e.distance < e.killingDistance) {
       e.x = 0;
       e.y = 0;
       e.randomize();
       // create point counting system
     }
+    
     e.drawBody();
     e.move();
   }
 }
 
 void mousePressed() {
-
   player.fire();
 }

@@ -23,6 +23,7 @@ class Enemy {
     this.angle = random(0, 360) * 2 *PI;
     this.x = cos(angle) * width/2;
     this.y = sin(angle) * width/2;
+    
   }
 
   void move() {
@@ -46,7 +47,7 @@ class Enemy {
   boolean checkAnswer(int answer) {
 
     if (this.answer == answer) {
-      this.destroy();
+      randomize();
       return true;
     }
 
