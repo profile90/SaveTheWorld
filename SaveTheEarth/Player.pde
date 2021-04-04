@@ -15,7 +15,7 @@ class Player {
     center = new PVector(width/2, height/2);
     canon = new PVector(mouseX, mouseY);
     randomize();
-  }s
+  }
 
   void drawCanon() {
 
