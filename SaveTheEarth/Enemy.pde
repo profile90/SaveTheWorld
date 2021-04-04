@@ -32,11 +32,11 @@ class Enemy {
     if (!existAnswer) 
     {
       this.answer = player.answer;
-      println("No answer exists, picking from player");
+      
     } else 
     {
       this.answer = int(random(0, 10));
-      println("Answer exists, generating random");
+      
 
     }
 

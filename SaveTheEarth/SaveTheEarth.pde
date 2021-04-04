@@ -72,7 +72,6 @@ void draw() {
           e.randomize();
         }
 
-        println(score);    
         toBeRemoved.add(p);
       }
 

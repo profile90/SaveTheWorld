@@ -36,7 +36,6 @@ class Player {
     circle(canon.x, canon.y, 20);
 
     projectiles.add(new Projectile(canon, answer));
-    println(projectiles);
   }
 
   void drawPlanet(boolean damage) {
@@ -83,14 +82,14 @@ class Player {
           min = newMin;
           minIndex = i;
         }
-        println("Min distance: " + min + " Distance : " + newMin + " from enemy " + enemies.get(i).answer);
+        
       }
 
       this.answer = enemies.get(minIndex).answer;
-      println("Player answer, from enemy: " + this.answer);
+      
     } else {
       this.answer = int(random(1, 10)); 
-      println("Player answer, randomly generated: " + this.answer);
+      
     }
 
     this.term1 = int(random(1, this.answer));
