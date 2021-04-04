@@ -8,21 +8,27 @@ int numbOfEnemies = 5;
 int numbOfProjectiles = 5;
 
 
+Player player;
+PImage background;
+PImage planet;
+
+
+
+
 
 Player player;
 PImage planet;
 PFont font;
 String text = "Försvara planeten!";
 
+
 void setup() {
+  background = loadImage("space_background.png");
   planet = loadImage("earth.png");
 
   player = new Player();
 
   size(1000, 1000);
-  background(50);
-  fill(255);
-
 
   for (int i = 0; i < numbOfEnemies; i++) {
     enemies.add(new Enemy());
@@ -41,11 +47,12 @@ void drawText() {
 }
 
 
+
 void draw() {
   translate(width/2, height/2);
   cursor(CROSS);
 
-  background(50);
+  background(background);
   stroke(255);
   fill(255);
 

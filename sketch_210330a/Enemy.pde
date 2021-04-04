@@ -11,8 +11,6 @@ class Enemy {
   PFont font = createFont("Arial", 16, true);
 
 
-
-
   Enemy() {
     randomize();
   }

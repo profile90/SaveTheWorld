@@ -14,12 +14,10 @@ class Projectile {
       this.trejectory = trejectory;
       this.acceleration = PVector.sub(trejectory, location);
 
-  }
-  
+  }  
   
   boolean hasHit(Enemy e) {
     PVector enemyPos = new PVector(e.x, e.y);
-    
     
     enemyPos.sub(location);
     
