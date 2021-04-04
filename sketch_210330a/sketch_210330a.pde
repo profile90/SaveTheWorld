@@ -11,13 +11,6 @@ int numbOfProjectiles = 5;
 Player player;
 PImage background;
 PImage planet;
-
-
-
-
-
-Player player;
-PImage planet;
 PFont font;
 String text = "Försvara planeten!";
 
@@ -69,6 +62,7 @@ void draw() {
 
         if (e.checkAnswer(p.answer)) {
           score++;
+          e.hit = true;
           player.randomize();
           e.randomize();
         }
@@ -101,7 +95,6 @@ void draw() {
       e.x = 0;
       e.y = 0;
       e.randomize();
-      // create point counting system
     }
 
     e.drawBody();

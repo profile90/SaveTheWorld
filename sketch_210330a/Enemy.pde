@@ -9,13 +9,18 @@ class Enemy {
   float killingDistance = width/20;
   float speed = random(1, 2);
   PFont font = createFont("Arial", 16, true);
-
+  boolean hit = false;
 
   Enemy() {
     randomize();
   }
 
   void randomize() {
+    this.hit = false;
+    this.distance = width/2 + random(-10, 10);
+    this.angle = random(0, 360) * 2 *PI;
+    this.x = cos(angle) * width/2;
+    this.y = sin(angle) * width/2;
     boolean existAnswer = false;
     for (Enemy e : enemies) {
       if (e.answer == player.answer && e != this) {
@@ -26,6 +31,7 @@ class Enemy {
     if (!existAnswer) 
     {
       this.answer = player.answer;
+      fill(255, 255, 0);
       println("No answer exists, picking from player");
     } else 
     {
@@ -34,16 +40,13 @@ class Enemy {
 
     }
 
-    this.distance = width /1.9;
-    this.angle = random(0, 360) * 2 *PI;
-    this.x = cos(angle) * width/2;
-    this.y = sin(angle) * width/2;
+ 
   }
 
   void move() {
 
 
-    this.distanceFromTarget = PVector.dist(new PVector(this.x, this.y), player.center);    
+    this.distanceFromTarget = new PVector(this.x, this.y).mag();    
 
 
     distance -= speed / 10;
