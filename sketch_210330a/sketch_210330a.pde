@@ -27,6 +27,9 @@ void setup() {
 
   player = new Player();
 
+  player.projectileImage = new PImage();
+  player.projectileImage = loadImage("projectile.png");
+  
   size(1000, 1000);
 
   for (int i = 0; i < numbOfEnemies; i++) {
@@ -42,7 +45,8 @@ void drawText() {
   textFont(font, 32); 
   textAlign(CENTER);
   text(text, 0, -height/4);
-  text(score, width/4, -height/4);
+  textFont(font, 16); 
+  text("Dina poäng: " + score, 0, -height/5);
 }
 
 
@@ -52,16 +56,11 @@ void draw() {
   cursor(CROSS);
 
   background(background);
-  stroke(255);
-  fill(255);
 
-  player.drawCanon();
-  player.drawPlanet(false);
-  drawText();
-  noStroke();
+
+
 
   for (Enemy e : enemies) {    
-
     for (Projectile p : projectiles) {  
 
       if (p.hasHit(e)) {
@@ -106,6 +105,10 @@ void draw() {
     e.drawBody();
     e.move();
   }
+  
+  player.drawCanon();
+  player.drawPlanet(false);
+  drawText();
 }
 
 void endScr() {

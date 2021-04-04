@@ -9,7 +9,8 @@ class Player {
 
   PVector canon;
   PVector center;
-
+  PImage projectileImage;
+  
   Player() {
     center = new PVector(width/2, height/2);
     canon = new PVector(mouseX, mouseY);
@@ -26,6 +27,7 @@ class Player {
     canon.mult(75);
 
     strokeWeight(3);
+    stroke(255, 0, 0);
     line(0, 0, canon.x, canon.y);
   }
 
@@ -42,9 +44,9 @@ class Player {
 
 
     imageMode(CENTER);
-    image(planet, 0, 0, 177, 85);
+    image(planet, 0, 0, 100, 100);
 
-    textFont(font, 16); 
+    textFont(font, 25); 
     textAlign(CENTER, CENTER);
     text((term1 + " + " + term2), 0, 0); 
 
@@ -93,14 +95,17 @@ class Player {
 
     this.term1 = int(random(1, this.answer));
 
-    if (this.term1 == this.answer || this.answer <= 1) {
+    if (this.term1 == this.answer || this.answer == 1) {
       this.term2 = 0;
     }
     else 
     {
       this.term2 = answer - term1;
     }
-
+    
+    if(term2 < 0) {
+      term2 = 0;
+    }
     
   }
 }

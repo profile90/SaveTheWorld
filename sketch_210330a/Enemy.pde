@@ -14,6 +14,7 @@ class Enemy {
   Enemy() {
     randomize();
   }
+  
 
   void randomize() {
     this.hit = false;
@@ -31,7 +32,6 @@ class Enemy {
     if (!existAnswer) 
     {
       this.answer = player.answer;
-      fill(255, 255, 0);
       println("No answer exists, picking from player");
     } else 
     {
@@ -55,14 +55,7 @@ class Enemy {
   } 
 
   void drawBody() {
-    // some cool animation and stuff
-
-    textFont(this.font, 16);
-    circle(this.x, this.y, size);
-    fill(155);
-    text(str(this.answer), this.x, this.y);
-    fill(0, 102, 153, 51);
-    
+    // some cool animation and stuff    
     image(astroids[this.answer], this.x, this.y);
     
   }

@@ -9,10 +9,13 @@ class Projectile {
   int topSpeed = 10;
   int answer;
   
+  
   Projectile(PVector trejectory, int answer) {
       this.answer = answer;
       this.trejectory = trejectory;
       this.acceleration = PVector.sub(trejectory, location);
+      location.x = trejectory.x;
+      location.y = trejectory.y;
 
   }  
   
@@ -27,14 +30,12 @@ class Projectile {
     
     return false;
   }
-  
+
   void move() {
     acceleration.setMag(0.02);
     velocity.add(acceleration);
     velocity.limit(topSpeed);
     location.add(velocity);
-    fill(255);   
-    circle(location.x, location.y, 20);
-   
+    image(player.projectileImage, location.x, location.y);
   }
 }
