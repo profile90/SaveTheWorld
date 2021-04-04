@@ -3,6 +3,7 @@ class Player {
   int answer;
   int term1;
   int term2;
+  int health = 4;
   
   int currentProjectile = 0;
   
@@ -12,6 +13,7 @@ class Player {
   Player() {
     center = new PVector(width/2, height/2);
     canon = new PVector(mouseX, mouseY);
+    randomize();
   }
 
   void drawCanon() {
@@ -27,7 +29,6 @@ class Player {
     line(0, 0, canon.x, canon.y);
     
     
-    
   }
   void fire() {
     
@@ -39,8 +40,15 @@ class Player {
   }
   
   void drawPlanet(boolean damage) {
+
+
+
     imageMode(CENTER);
     image(planet, 0, 0, 177, 85);
+ 
+    textFont(font, 16); 
+    textAlign(CENTER, CENTER);
+    text((term1 + " + " + term2), 0, 0); 
     
     if(damage) 
     {
@@ -65,9 +73,32 @@ class Player {
   }
   
   void randomize() {
-    
-    this.answer = int(random(1, 10));
-    this.term1 = int(random(1, answer));
+  
+    if(enemies.size() > 0) {
+      
+      float min = enemies.get(0).distanceFromTarget;  
+      int minIndex = 0;
+      for(int i = 0; i < enemies.size(); i++) {
+
+        float newMin = enemies.get(i).distanceFromTarget;
+         
+        if(newMin < min) {
+          min = newMin;
+          minIndex = i;
+        }
+        println("Distance : " + min);
+      }
+  
+     this.answer = enemies.get(minIndex).answer;
+     println("Player answer, from enemy: " + this.answer);
+   }
+   else {
+     this.answer = int(random(1, 10)); 
+     println("Player answer, randomly generated: " + this.answer); 
+
+   }
+   
+    this.term1 = int(random(1, this.answer));
     
     if(this.term1 == this.answer) {
        this.term2 = 0;  

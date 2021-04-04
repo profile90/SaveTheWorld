@@ -37,5 +37,6 @@ class Projectile {
     location.add(velocity);
     fill(255);   
     circle(location.x, location.y, 20);
+   
   }
 }
