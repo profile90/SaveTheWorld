@@ -11,6 +11,7 @@ int numbOfProjectiles = 5;
 Player player;
 PImage background;
 PImage planet;
+PImage[] astroids;
 PFont font;
 String text = "Försvara planeten!";
 
@@ -18,6 +19,11 @@ String text = "Försvara planeten!";
 void setup() {
   background = loadImage("space_background.png");
   planet = loadImage("earth.png");
+  astroids = new PImage[11];
+  
+  for(int i = 0; i < astroids.length; i++) {
+    astroids[i] = loadImage("astroids/" + i + ".png");
+  }
 
   player = new Player();
 

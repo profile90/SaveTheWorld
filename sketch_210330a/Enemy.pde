@@ -62,6 +62,9 @@ class Enemy {
     fill(155);
     text(str(this.answer), this.x, this.y);
     fill(0, 102, 153, 51);
+    
+    image(astroids[this.answer], this.x, this.y);
+    
   }
 
 
