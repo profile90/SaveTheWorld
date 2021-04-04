@@ -36,6 +36,7 @@ class Player {
     circle(canon.x, canon.y, 20);
 
     projectiles.add(new Projectile(canon, answer));
+    pew.play();
   }
 
   void drawPlanet(boolean damage) {
@@ -101,8 +102,9 @@ class Player {
     {
       this.term2 = answer - term1;
     }
-    
-    if(term2 < 0) {
+     
+    if(term2 == -1) {
+      term1 = 0;
       term2 = 0;
     }
     
