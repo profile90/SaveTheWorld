@@ -6,7 +6,7 @@ class Enemy {
   float angle;
   float distanceFromTarget;
   float distance = width/2;
-  float killingDistance = width/20;
+  float killingDistance = player.size;
   float speed = random(1, 2);
   PFont font = createFont("Arial", 16, true);
   boolean hit = false;

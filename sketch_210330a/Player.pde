@@ -4,7 +4,7 @@ class Player {
   int term1;
   int term2;
   int health = 4;
-
+  float size = 100;
   int currentProjectile = 0;
 
   PVector canon;
@@ -15,7 +15,7 @@ class Player {
     center = new PVector(width/2, height/2);
     canon = new PVector(mouseX, mouseY);
     randomize();
-  }
+  }s
 
   void drawCanon() {
 
